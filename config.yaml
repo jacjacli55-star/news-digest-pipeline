@@ -1,0 +1,105 @@
+# =====================================================================
+#  Daily News Digest — configuration
+#  Free Google News RSS (aggregates Reuters, BBC, AP, Guardian, etc.)
+# =====================================================================
+
+# Region / language for "local" news (change to your country, e.g.
+# Taiwan: hl=zh-Hant, gl=TW, ceid=TW:zh-Hant ; Singapore: hl=en-SG, gl=SG, ceid=SG:en)
+local:
+  hl: "en-US"
+  gl: "US"
+  ceid: "US:en"
+
+# Region / language for "international" news
+international:
+  hl: "en-US"
+  gl: "US"
+  ceid: "US:en"
+
+# Time window (hours of fresh news to keep) and maximum items per domain
+time_window_hours: 24
+max_items_per_domain: 8
+
+# ---------------------------------------------------------------------
+# News domains and their search queries (OR'd together per query line).
+# More queries = more coverage but slower runs.
+# ---------------------------------------------------------------------
+domains:
+  technology:
+    queries:
+      - "technology news"
+      - "artificial intelligence OR AI OR cybersecurity"
+  counter_terrorism:
+    queries:
+      - "counter-terrorism OR terrorism"
+      - "national security OR homeland security"
+  self_improvement:
+    queries:
+      - "self-improvement OR personal development OR productivity"
+      - "wellness OR habit OR mindfulness"
+  management:
+    queries:
+      - "management OR business strategy"
+      - "corporate OR enterprise OR organization"
+  leadership:
+    queries:
+      - "leadership OR management leadership"
+      - "executive OR CEO"
+  public_concern:
+    queries:
+      - "public concern OR controversy OR trending"
+    top_stories: true   # also include the global "Top Stories" headline feed
+
+# ---------------------------------------------------------------------
+# FACT-CHECK SETTINGS
+# ---------------------------------------------------------------------
+# Tier-1 trusted outlets: a single article from one of these is accepted
+# as verified without needing a second source. Anything else must appear
+# in >= min_sources_for_verification distinct outlets.
+tier1_sources:
+  - "Reuters"
+  - "BBC"
+  - "Associated Press"
+  - "AP"
+  - "The Guardian"
+  - "The New York Times"
+  - "Wall Street Journal"
+  - "Bloomberg"
+  - "CNN"
+  - "CBS News"
+  - "NBC News"
+  - "ABC News"
+  - "CNBC"
+  - "Financial Times"
+  - "The Economist"
+  - "Al Jazeera"
+  - "France 24"
+  - "DW"
+  - "NHK World"
+  - "The Straits Times"
+  - "South China Morning Post"
+  - "CNA"
+  - "Nikkei"
+
+min_sources_for_verification: 2
+
+# Output settings
+output_dir: "output"
+review_dir: "review"          # unverified / needs-manual-check articles land here as a CSV/MD
+report_title: "Daily News Digest"
+
+# Google Drive upload
+drive:
+  enabled: true
+  folder_name: "DailyNewsDigest"
+  # OAuth client JSON for a Desktop app (see README). Leave empty to use a
+  # service account or the existing ADC instead.
+  oauth_client_file: "credentials/oauth_client.json"
+  token_file: "credentials/token.json"
+  # If neither of the above is usable, the uploader tries your existing
+  # gcloud application-default-credentials.
+  use_application_default: true
+
+# PDF report filename date format
+pdf_name_pattern: "DailyNewsDigest_%Y-%m-%d.pdf"
+md_name_pattern: "DailyNewsDigest_%Y-%m-%d.md"

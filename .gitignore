@@ -1,0 +1,24 @@
+# --- Python / venv ---
+.venv/
+__pycache__/
+*.pyc
+
+# --- macOS ---
+.DS_Store
+
+# --- Generated at runtime (never commit) ---
+output/
+review/
+logs/
+site/
+
+# --- Settings / secrets that may hold tokens later ---
+credentials/
+
+# --- GitHub Pages mirror (separate git repo) ---
+gh-pages/
+
+# --- Archify generated artifacts (regenerable) ---
+.archify/
+how-it-works.html
+how-it-works.*.json
